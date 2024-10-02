@@ -58,29 +58,44 @@ class ObjView:
         plt.show()
 
 class Scene:
-    def __init__(self, views: list[ObjView]) -> None:
+    def __init__(self, views: list['ObjView'], root_dir: str) -> None:
         self.views = views
         self.matcher = cv2.BFMatcher(cv2.NORM_L2, crossCheck=True)
+        self.root_dir = root_dir
+        self.matches = {}
         self.computeMatches()
 
     def computeMatches(self) -> None:
-        self.matches = {}
+        matches_dir = os.path.join(self.root_dir, "matches")
+        os.makedirs(matches_dir, exist_ok=True)
         num_views = len(self.views)
         for i in tqdm(range(num_views), desc="Matching Object Views"):
             for j in range(num_views):
-                match = self.matcher.match(self.views[i].desc, self.views[j].desc)
-                match = sorted(match, key=lambda x: x.distance)
-                self.matches[(self.views[i].img_name, self.views[j].img_name)] = match
+                match_path = os.path.join(matches_dir, f"{self.views[i].img_name}_{self.views[j].img_name}_matches.npy")
+                if os.path.exists(match_path):
+                    self.matches[(self.views[i].img_name, self.views[j].img_name)] = self.load_matches(match_path)
+                else:
+                    match = self.matcher.match(self.views[i].desc, self.views[j].desc)
+                    match = sorted(match, key=lambda x: x.distance)
+                    self.matches[(self.views[i].img_name, self.views[j].img_name)] = match
+                    self.save_matches(match_path, match)
 
-    def plot_matches(self, objview1: ObjView, objview2: ObjView, top_k: int = 100) -> None:
+    def save_matches(self, match_path: str, match: list[cv2.DMatch]) -> None:
+        match_array = np.array([(m.queryIdx, m.trainIdx, m.distance) for m in match], dtype=np.float32)
+        np.save(match_path, match_array)
+
+    def load_matches(self, match_path: str) -> list[cv2.DMatch]:
+        match_array = np.load(match_path, mmap_mode='r')
+        return [cv2.DMatch(int(m[0]), int(m[1]), m[2]) for m in match_array]
+
+    def plot_matches(self, objview1: 'ObjView', objview2: 'ObjView', top_k: int = 100) -> None:
         plot = cv2.drawMatches(
-                objview1.img_array, 
-                objview1.kp, 
-                objview2.img_array, 
-                objview1.kp, 
-                self.matches[(objview1.img_name, objview2.img_name)][:top_k], 
-                None, flags = 
-                cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS
-            )
+            objview1.img_array, 
+            objview1.kp, 
+            objview2.img_array, 
+            objview2.kp, 
+            self.matches[(objview1.img_name, objview2.img_name)][:top_k], 
+            None, flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS
+        )
         plt.imshow(plot)
         plt.show()
