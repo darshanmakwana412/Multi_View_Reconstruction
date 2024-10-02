@@ -1,5 +1,18 @@
 # Multi View Reconstruction
 
+## Tasks
+- [ ] Pipeline for Imagery Collection
+- [ ] Camera Parameter Estimation
+   ![cam_par](./assets/cam_par.png)
+   - Method 1: [Automatic Camera Recovery for closed or Open Image Sequences](https://ora.ox.ac.uk/objects/uuid:e533e8d4-d750-4e0d-a9f5-92174013764a/files/sd217qr45g)
+   - Method 2: [Self-Calibration and Metric Reconstruction
+in spite of Varying and Unknown Intrinsic Camera Parameter](https://people.inf.ethz.ch/~pomarc/pubs/PollefeysIJCV99.pdf)
+   - Method 3: SIFT (Scale Invariant Feature Transform)
+- [ ] Bundle Adjustment
+- [ ] Depthmap Reconstruction(not necessary can use a graph cut based method on voxel grid)
+- [ ] Volumentric Fusion
+- [ ] Final Rendering
+
 ## Problem Framing
 
 We are framing the multi-view reconstruction problem as a **convex energy minimization** problem. The following resources provide key insights into this approach and offer foundational concepts to be implemented:
