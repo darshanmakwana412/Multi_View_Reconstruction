@@ -1,4 +1,5 @@
 from parameter_esimation import ObjView, Scene
 
-views = ObjView.load_from("bottle")
-scene = Scene(views)
+obj_dir = "bottle"
+views = ObjView.load_from(obj_dir)
+scene = Scene(views, obj_dir)
