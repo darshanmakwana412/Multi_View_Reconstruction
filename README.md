@@ -28,7 +28,7 @@ We are framing the multi-view reconstruction problem as a **convex energy minimi
 
 ## Reconstruction from visual Hull
 
-25 Voxels             |   50 Voxels | 100 Voxels
+25^3 Voxels             |   50^3 Voxels | 100^3 Voxels
 :-------------------------:|:-------------------------:|:-------------------------:
 ![](./assets/naruto_25.gif)  |  ![](./assets/naruto_50.gif) | ![](./assets/naruto_100.gif)
 
