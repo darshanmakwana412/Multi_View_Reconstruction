@@ -20,11 +20,19 @@ We are framing the multi-view reconstruction problem as a **convex energy minimi
 - [Framing the Multi View Reconstruction problem as a convex energy minimization problem](https://cvg.cit.tum.de/_media/spezial/bib/kolev-et-al-ijcv09.pdf)
 - [Multi View Reconstruction from RGB + Depth Data](https://cvg.cit.tum.de/_media/spezial/bib/steinbruecker_etal_iccv2013.pdf)
 
-## Surface Reconstruction Using Voxel Mapping
+## Generating Visual Hull
 
-For surface reconstruction using voxel mapping, we are basing our implementation on ideas presented in the following paper:
+![](./assets/rc1.png)  |  ![](./assets/rc2.png)
+:-------------------------:|:-------------------------:
+![](./assets/rc3.png)  |  ![](./assets/rc4.png)
 
-- [Surface Reconstruction from 2D images using Voxel Mapping](https://ijoes.vidyapublications.com/paper/Vol24/09-Vol24.pdf)
+## Reconstruction from visual Hull
+
+25 Voxels             |   50 Voxels | 100 Voxels
+:-------------------------:|:-------------------------:|:-------------------------:
+![](./assets/naruto_25.gif)  |  ![](./assets/naruto_50.gif) | ![](./assets/naruto_100.gif)
+
+## Graph Cut
 
 ## Additional References
 
