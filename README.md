@@ -13,6 +13,24 @@ in spite of Varying and Unknown Intrinsic Camera Parameter](https://people.inf.e
 - [ ] Volumentric Fusion
 - [ ] Final Rendering
 
+# Pose Estimation
+
+Calibrating the camera using Aruco Board
+![](./assets/aruco_board.png)
+
+Capturing images of the object on the aruco Board
+![](./assets/img_capture.gif)
+
+Estimating the Pose of the object
+
+![](./assets/pose1.png)  |  ![](./assets/pose2.png)
+:-------------------------:|:-------------------------:
+
+## Aruco Marker Generation and Detection
+[Detection of Aruco Boards](https://docs.opencv.org/4.x/db/da9/tutorial_aruco_board_detection.html#autotoc_md1053)
+[Calibration with Aruco Boards](https://docs.opencv.org/4.x/da/d13/tutorial_aruco_calibration.html)
+
+
 ## Problem Framing
 
 We are framing the multi-view reconstruction problem as a **convex energy minimization** problem. The following resources provide key insights into this approach and offer foundational concepts to be implemented:

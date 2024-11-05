@@ -1,0 +1,2 @@
+sudo apt-get install libgl1-mesa-dev libgl1-mesa-glx libosmesa6-dev
+pip install PyOpenGL PyOpenGL_accelerate
