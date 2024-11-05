@@ -17,6 +17,9 @@ def norm(v):
     return v / norm
 
 class Scene:
+    """
+    A class for virtually rendering the object
+    """
     def __init__(self, mesh, image_width: int = 640, image_height: int = 480) -> None:
 
         self.image_width = image_width
